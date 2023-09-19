@@ -71,6 +71,9 @@ truth = "1.1.3"
 mockk = "1.12.2"
 turbine = "0.11.0"
 androidx_core_testing = "2.2.0"
+androidx-test-ext-junit = "1.1.5"
+espresso-core = "3.5.1"
+material = "1.8.0"
 
 [libraries]
 #android_gradle_plugin_lib = { module = "com.android.tools.build:gradle", version.ref = "android_gradle_plugin" }
@@ -122,7 +125,6 @@ androidx_compose_ui_material3_window_size = { module = "androidx.compose.materia
 androidx_compose_theme_adapter = { module = "com.google.android.material:compose-theme-adapter", version.ref = "androidx_compose_theme_adapter" }
 androidx_compose_activity = { module = "androidx.activity:activity-compose", version.ref = "androidx_activity_compose" }
 androidx_compose_lifecycle = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx_viewmodel_compose" }
-androidx_compose_ui_accompanist_insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "androidx_accompanist" }
 androidx_compose_ui_accompanist_pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "androidx_accompanist" }
 androidx_compose_ui_accompanist_pager_indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "androidx_accompanist" }
 androidx_compose_ui_accompanist_permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "androidx_accompanist" }
@@ -131,7 +133,6 @@ androidx_compose_ui_accompanist_placeholder_material = { module = "com.google.ac
 androidx_compose_ui_accompanist_navigation_animation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "androidx_accompanist" }
 androidx_compose_ui_accompanist_navigation_material = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "androidx_accompanist" }
 androidx_compose_ui_accompanist_drawable_painter = { module = "com.google.accompanist:accompanist-drawablepainter", version.ref = "androidx_accompanist" }
-androidx_compose_ui_accompanist_swipe_refresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "androidx_accompanist" }
 androidx_compose_ui_accompanist_system_ui_controller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "androidx_accompanist" }
 androidx_compose_ui_accompanist_web_view = { module = "com.google.accompanist:accompanist-webview", version.ref = "androidx_accompanist" }
 androidx_compose_ui_accompanist_flow_layout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "androidx_accompanist" }
@@ -199,3 +200,6 @@ kotlin_test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 flow_test = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }

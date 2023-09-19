@@ -38,8 +38,6 @@ dependencies {
     implementation libs.androidx.compose.theme.adapter
     implementation libs.androidx.compose.activity
     implementation libs.androidx.compose.lifecycle
-    implementation libs.androidx.compose.ui.accompanist.insets
-    implementation libs.androidx.compose.ui.accompanist.swipe.refresh
     implementation libs.androidx.compose.ui.accompanist.navigation.animation
     implementation libs.androidx.compose.ui.accompanist.navigation.material
     implementation libs.androidx.compose.ui.accompanist.system.ui.controller
@@ -49,9 +47,6 @@ dependencies {
     implementation libs.androidx.compose.ui.accompanist.web.view
     implementation libs.androidx.compose.ui.accompanist.flow.layout
     implementation libs.androidx.compose.constraint.layout
-
-    implementation libs.twitter.ui
-    implementation libs.facebook.sdk
 
     //Coroutines
     implementation libs.coroutines.core

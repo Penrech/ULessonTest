@@ -14,4 +14,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "ULessonTest"
 include(":app")
- 
+include(":main")
+include(":common")
+include(":chapter")
+include(":videoplayer")
+include(":home")
+include(":common-resources")
