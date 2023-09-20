@@ -3,13 +3,13 @@ app_version_major = "1"
 app_version_minor = "0"
 app_version_fix = "0"
 
-compile_sdk = "33"
-min_sdk = "21"
+compile_sdk = "34"
+min_sdk = "24"
 target_sdk = "33"
 build_tools = "34.0.0"
 
 gradle_plugin = "8.1.1"
-kotlin = "1.9.10"
+kotlin = "1.9.0"
 kotlin_serialization = "1.5.1"
 kotlin_date_time = "0.4.1"
 

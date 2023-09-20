@@ -5,7 +5,11 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
+    androidTarget {
+        compilations.all {
+            kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+        }
+    }
     ios()
     iosSimulatorArm64()
 
@@ -30,6 +34,7 @@ kotlin {
                 implementation(libs.dagger)
                 implementation(libs.coroutines.core)
                 implementation(libs.coroutines.android)
+                implementation(libs.timber)
             }
         }
         val iosMain by getting

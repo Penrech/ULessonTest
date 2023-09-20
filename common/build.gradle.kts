@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 apply(from = "$rootDir/android-config.gradle")
@@ -14,4 +15,5 @@ android.namespace = "com.enrech.ulessontest.common"
 
 dependencies {
     api(project(":common-resources"))
+    api(project(":common-data"))
 }
