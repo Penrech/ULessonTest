@@ -68,7 +68,9 @@ private fun UIContent(selected: (route: String) -> Boolean, onClick: (route: Str
         containerColor = Color.White
     ) {
         items.forEach { screen ->
-            val label = stringResource(id = screen.textId)
+            val isSelected = selected(screen.route)
+            val labelColor = if (isSelected) typePrimary else grey50
+
             NavigationBarItem(
                 colors = NavigationBarItemDefaults.colors(
                     unselectedIconColor = grey50,
@@ -82,9 +84,10 @@ private fun UIContent(selected: (route: String) -> Boolean, onClick: (route: Str
                     Text(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
-                        text = stringResource(id = screen.textId).uppercase(),
+                        text = stringResource(id = screen.textId),
                         style = MaterialTheme.typography.labelSmall,
                         textAlign = TextAlign.Center,
+                        color = labelColor,
                         modifier = Modifier.fillMaxWidth()
                     )
                 },
