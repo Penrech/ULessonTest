@@ -6,7 +6,11 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
+    androidTarget {
+        compilations.all {
+            kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
+        }
+    }
     ios()
     iosSimulatorArm64()
 
@@ -36,5 +40,9 @@ android {
     defaultConfig {
         minSdk = Integer.parseInt(libs.versions.min.sdk.get())
         targetSdk = Integer.parseInt(libs.versions.target.sdk.get())
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }

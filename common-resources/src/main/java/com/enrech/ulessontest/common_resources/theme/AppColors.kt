@@ -27,6 +27,7 @@ val overlayDark = Color(0x99313848)
 
 //Grey scale
 val white = Color.White
+val toolbarIconGrey = Color(0xFFEFEFEF)
 val whiteAlt = Color(0xFFFCFBF9)
 val grey10 = Color(0xFFF4F4F5)
 val grey20 = Color(0xFFEDEDEE)

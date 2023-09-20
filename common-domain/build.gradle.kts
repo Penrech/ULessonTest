@@ -7,7 +7,7 @@ plugins {
 kotlin {
     androidTarget {
         compilations.all {
-            kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+            kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
         }
     }
     ios()
@@ -47,8 +47,14 @@ kotlin {
 android {
     namespace = "com.enrech.ulessontest.common_domain"
     compileSdk = Integer.parseInt(libs.versions.compile.sdk.get())
+
     defaultConfig {
         minSdk = Integer.parseInt(libs.versions.min.sdk.get())
         targetSdk = Integer.parseInt(libs.versions.target.sdk.get())
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }

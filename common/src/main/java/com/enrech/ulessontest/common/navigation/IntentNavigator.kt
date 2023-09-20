@@ -9,7 +9,7 @@ import com.enrech.ulessontest.common.navigation.Constant.ACTIVITY_SPLASH
 
 class IntentNavigator(private val context: Context) {
 
-    fun openMain(clearStack: Boolean = true, deepLink: Uri?) = openIntentPackageName(
+    fun openMain(clearStack: Boolean = true, deepLink: Uri? = null) = openIntentPackageName(
         getIntentForClassName(
             ACTIVITY_MAIN,
             deepLink

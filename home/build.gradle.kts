@@ -12,4 +12,6 @@ apply(from = "$rootDir/test-dependencies.gradle")
 
 android.namespace = "com.enrech.ulessontest.home"
 
-dependencies {}
+dependencies {
+    implementation(project(":common"))
+}
