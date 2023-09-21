@@ -1,7 +1,7 @@
 package com.enrech.ulessontest.common_domain
 
 sealed class ULessonResult<out T> {
-    data class Success<out T>(val data: T) : ULessonResult<T>()
+    data class Success<out T>(val data: T, val secondaryError: ULessonError? = null) : ULessonResult<T>()
     data class Failure<T>(val error: ULessonError) : ULessonResult<T>()
 }
 
