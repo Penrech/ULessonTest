@@ -1,0 +1,36 @@
+
+CREATE TABLE IF NOT EXISTS lessonDto (
+    id TEXT PRIMARY KEY NOT NULL,
+    groupId TEXT NOT NULL,
+    name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    duration INTEGER NOT NULL,
+    streamUrl TEXT NOT NULL,
+    FOREIGN KEY (groupId) REFERENCES lessonDto(id) ON DELETE CASCADE
+);
+
+insertLesson:
+INSERT OR REPLACE INTO lessonDto(id, groupId, name, description, duration, streamUrl)
+VALUES ?;
+
+getAllLesson:
+SELECT *
+FROM lessonDto;
+
+getLesson:
+SELECT DISTINCT *
+FROM lessonDto
+WHERE id = ?;
+
+getLessonsByIds:
+SELECT *
+FROM lessonDto
+WHERE id IN ?;
+
+getLessonsByGroupId:
+SELECT *
+FROM lessonDto
+WHERE groupId IN ?;
+
+clearLessons:
+DELETE FROM lessonDto;

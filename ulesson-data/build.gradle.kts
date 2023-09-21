@@ -13,7 +13,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":common-domain"))
+                api(project(":common-data"))
                 api(project(":ulesson-domain"))
                 implementation(libs.kotlin.date.time)
 
@@ -29,7 +29,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation(project(":common-domain"))
+                implementation(project(":common-data"))
                 implementation(project(":ulesson-domain"))
                 implementation(libs.ktor.client.android)
                 implementation(libs.timber)

@@ -1,4 +1,4 @@
-package com.enrech.ulessontest.common_domain.provider
+package com.enrech.ulessontest.common_data.provider
 
 
 interface UrlProvider {

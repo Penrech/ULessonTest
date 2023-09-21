@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.dokka")
+    id("app.cash.sqldelight")
 }
 
 kotlin {
@@ -22,6 +23,8 @@ kotlin {
                 //Coroutines
                 implementation(libs.coroutines.core)
 
+                implementation(libs.sqldelight.adapters)
+
                 //Ktor
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.json)
@@ -35,12 +38,25 @@ kotlin {
                 implementation(libs.coroutines.core)
                 implementation(libs.coroutines.android)
                 implementation(libs.timber)
+
+                api(libs.sqldelight.android.driver)
             }
         }
-        val iosMain by getting
-
+        val iosMain by getting {
+            dependencies {
+                api(libs.sqldelight.native.driver)
+            }
+        }
         val iosSimulatorArm64Main by getting
         iosSimulatorArm64Main.dependsOn(iosMain)
+    }
+}
+
+sqldelight {
+    databases {
+        create("ULessonCacheDb") {
+            packageName.set("com.enrech.ulessontest.common_domain")
+        }
     }
 }
 

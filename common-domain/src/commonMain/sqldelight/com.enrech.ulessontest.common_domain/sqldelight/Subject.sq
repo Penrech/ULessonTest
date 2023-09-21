@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS subjectDto(
+    id TEXT PRIMARY KEY NOT NULL,
+    title TEXT NOT NULL
+);
+
+insertSubject:
+INSERT OR REPLACE INTO subjectDto(id, title)
+VALUES ?;
+
+getAllSubject:
+SELECT *
+FROM subjectDto;
+
+getSubjectsByIds:
+SELECT *
+FROM subjectDto
+WHERE id IN ?;
+
+getSubject:
+SELECT DISTINCT *
+FROM subjectDto
+WHERE id = ?;
+
+clearSubject:
+DELETE FROM subjectDto;

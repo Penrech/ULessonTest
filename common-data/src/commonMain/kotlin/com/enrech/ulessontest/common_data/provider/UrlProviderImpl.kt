@@ -1,7 +1,6 @@
 package com.enrech.ulessontest.common_data.provider
 
 import com.chrynan.inject.Inject
-import com.enrech.ulessontest.common_domain.provider.UrlProvider
 
 class UrlProviderImpl @Inject constructor(): UrlProvider {
 

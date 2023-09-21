@@ -1,0 +1,35 @@
+import kotlin.Int;
+
+CREATE TABLE IF NOT EXISTS chapterDto(
+    id TEXT PRIMARY KEY NOT NULL,
+    subjectId TEXT NOT NULL,
+    title TEXT NOT NULL,
+    orderPosition INTEGER AS Int NOT NULL,
+    FOREIGN KEY (subjectId) REFERENCES subjectDto(id) ON DELETE CASCADE
+);
+
+insertChapter:
+INSERT OR REPLACE INTO chapterDto(id, subjectId, title, orderPosition)
+VALUES ?;
+
+getAllChapter:
+SELECT *
+FROM chapterDto;
+
+getChapter:
+SELECT DISTINCT *
+FROM chapterDto
+WHERE id = ?;
+
+getChaptersByIds:
+SELECT *
+FROM chapterDto
+WHERE id IN ?;
+
+getChaptersBySubjectId:
+SELECT *
+FROM chapterDto
+WHERE subjectId IN ?;
+
+clearChapter:
+DELETE FROM chapterDto;

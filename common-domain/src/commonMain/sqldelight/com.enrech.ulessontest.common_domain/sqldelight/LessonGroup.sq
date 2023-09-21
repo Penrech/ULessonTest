@@ -1,0 +1,32 @@
+CREATE TABLE IF NOT EXISTS lessonGroupDto (
+   id TEXT PRIMARY KEY NOT NULL,
+   chapterId TEXT NOT NULL,
+   title TEXT NOT NULL,
+   FOREIGN KEY (chapterId) REFERENCES chapterDto(id) ON DELETE CASCADE
+);
+
+insertLessonGroup:
+INSERT OR REPLACE INTO lessonGroupDto(id, chapterId, title)
+VALUES ?;
+
+getAllLessonGroup:
+SELECT *
+FROM lessonGroupDto;
+
+getLessonGroup:
+SELECT DISTINCT *
+FROM lessonGroupDto
+WHERE id = ?;
+
+getLessonGroupsByIds:
+SELECT *
+FROM lessonGroupDto
+WHERE id IN ?;
+
+getLessonGroupSByChapterId:
+SELECT *
+FROM lessonGroupDto
+WHERE chapterId IN ?;
+
+clearLessonGroups:
+DELETE FROM lessonGroupDto;

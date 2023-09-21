@@ -13,6 +13,7 @@ buildscript {
         classpath(libs.dagger.plugin)
         classpath(libs.kotlin.dokka)
         classpath(libs.kotlin.serialization.plugin)
+        classpath(libs.sqldelight.plugin)
     }
 }
 

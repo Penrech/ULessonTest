@@ -1,8 +1,8 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    kotlin("kapt")
     kotlin("plugin.serialization")
+    kotlin("kapt")
 }
 
 kotlin {
@@ -23,6 +23,8 @@ kotlin {
 
                 //Coroutines
                 implementation(libs.coroutines.core)
+
+                implementation(libs.sqldelight.adapters)
 
                 //Ktor
                 implementation(libs.ktor.client.core)

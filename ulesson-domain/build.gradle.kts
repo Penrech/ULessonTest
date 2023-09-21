@@ -22,7 +22,11 @@ kotlin {
                 implementation(libs.coroutines.core)
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation(project(":common-domain"))
+            }
+        }
         val iosMain by getting
 
         val iosSimulatorArm64Main by getting

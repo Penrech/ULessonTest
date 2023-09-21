@@ -41,6 +41,8 @@ androidx_viewmodel_compose = "2.6.2"
 androidx_splash = "1.0.1"
 androidx_work = "2.8.1"
 
+sqldelight = "2.0.0"
+
 material_design = "1.6.1"
 material_design3 = "1.1.1"
 
@@ -164,6 +166,14 @@ ktor_client_serialization_json = { module = "io.ktor:ktor-serialization-kotlinx-
 ktor_client_cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor_client_android = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor_client_ios = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+
+# SQL Delight
+sqldelight_plugin = { module = "app.cash.sqldelight:gradle-plugin", version.ref = "sqldelight" }
+sqldelight_runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqldelight" }
+sqldelight_android_driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight_native_driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
+sqldelight_coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+sqldelight_adapters = { module = "app.cash.sqldelight:primitive-adapters", version.ref = "sqldelight" }
 
 # Dagger
 dagger = { module = "com.google.dagger:hilt-android", version.ref = "dagger" }
