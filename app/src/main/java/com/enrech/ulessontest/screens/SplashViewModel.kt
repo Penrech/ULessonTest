@@ -22,7 +22,7 @@ class SplashViewModel @Inject constructor(
     override fun createInitialScreenState(): SplashScreenState = SplashScreenState
 
     init {
-       flow<Unit> { delay(300) }
+       flow { emit(delay(300)) }
            .flowOn(dispatcherProvider.io())
            .onEach { setEffect { SplashEffect.LaunchMainActivity } }
            .launchIn(viewModelScope)

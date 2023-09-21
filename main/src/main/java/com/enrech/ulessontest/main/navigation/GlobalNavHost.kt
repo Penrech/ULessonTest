@@ -6,6 +6,7 @@ import com.enrech.ulessontest.common.components.custom_bottom_sheet.CustomBottom
 import com.enrech.ulessontest.common.components.custom_bottom_sheet.CustomModalBottomSheetLayout
 import com.enrech.ulessontest.common.composition.LocalModalNavController
 import com.enrech.ulessontest.common.navigation.uLessonGlobalComposable
+import com.enrech.ulessontest.main.screens.MainScreen
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 
 @OptIn(ExperimentalMaterialNavigationApi::class)
@@ -19,7 +20,7 @@ fun GlobalNavHost(bottomSheetNavigator: CustomBottomSheetNavigator) {
             startDestination = GlobalDestination.Root.routeDestination
         ) {
             uLessonGlobalComposable(GlobalDestination.Root) {
-
+                MainScreen()
             }
         }
     }
