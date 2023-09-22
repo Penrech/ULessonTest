@@ -1,10 +1,11 @@
 CREATE TABLE IF NOT EXISTS subjectDto(
     id TEXT PRIMARY KEY NOT NULL,
-    title TEXT NOT NULL
+    title TEXT NOT NULL,
+    acronym TEXT NOT NULL
 );
 
 insertSubject:
-INSERT OR REPLACE INTO subjectDto(id, title)
+INSERT OR REPLACE INTO subjectDto(id, title, acronym)
 VALUES ?;
 
 getAllSubject:

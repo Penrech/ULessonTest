@@ -27,9 +27,7 @@ interface Destination {
         }
 
     companion object {
-        const val DEEP_LINK_SCHEMA = "motogp://"
-        const val DESTINATION_STATUS_BAR_DARK = "dark_mode_destination"
-        const val EXTERNAL_DEEP_LINK_SCHEMA = "https://"
+        const val DEEP_LINK_SCHEMA = "ul://"
     }
 
     // adds query params to url or nothing if no params

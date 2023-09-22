@@ -10,7 +10,7 @@ apply(from = "$rootDir/feature-dependencies.gradle")
 
 
 android {
-    namespace = "com.pulselive.skeleton"
+    namespace = "com.enrech.ulessontest"
     compileSdk = Integer.parseInt(libs.versions.compile.sdk.get())
     buildToolsVersion = libs.versions.build.tools.get()
 

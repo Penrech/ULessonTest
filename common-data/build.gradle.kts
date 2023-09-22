@@ -1,3 +1,5 @@
+import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -36,7 +38,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation(project(":common-domain"))
+                api(project(":common-domain"))
                 implementation(libs.ktor.client.android)
 
                 implementation(libs.dagger)
@@ -45,7 +47,7 @@ kotlin {
 
                 configurations["kapt"].dependencies
                     .add(
-                        org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency(
+                        DefaultExternalModuleDependency(
                             "com.google.dagger",
                             "hilt-android-compiler",
                             libs.versions.dagger.get()
@@ -74,5 +76,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+    kapt {
+        correctErrorTypes = true
     }
 }

@@ -22,3 +22,13 @@ suspend fun <T> safeCall(call: suspend () -> T): ULessonResult<T> {
         }
     }
 }
+
+fun <T> safeTransaction(previousError: ULessonError? = null, call: () -> T): ULessonResult<T> {
+    return try {
+        val result = call()
+        ULessonResult.Success(result, previousError)
+    } catch (e: Exception) {
+        Logger.e(e) { "Db transaction error" }
+        ULessonResult.Failure(ULessonError.Unknown)
+    }
+}

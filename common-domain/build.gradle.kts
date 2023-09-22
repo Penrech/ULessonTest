@@ -18,7 +18,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(libs.kotlin.date.time)
-                api(libs.javax.inject.kmm)
 
                 //Coroutines
                 implementation(libs.coroutines.core)

@@ -6,13 +6,13 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import app.cash.sqldelight.adapter.primitive.IntColumnAdapter
 import com.enrech.ulessontest.common_data.provider.DispatcherProviderImpl
 import com.enrech.ulessontest.common_data.provider.HttpClientProvider
-import com.enrech.ulessontest.common_data.provider.UrlProvider
 import com.enrech.ulessontest.common_data.provider.UrlProviderImpl
 import com.enrech.ulessontest.common_data.repository.CacheDbRepositoryImpl
 import com.enrech.ulessontest.common_data.utils.ApplicationLifeCycle
 import com.enrech.ulessontest.common_domain.DriverFactory
 import com.enrech.ulessontest.common_domain.ULessonCacheDb
 import com.enrech.ulessontest.common_domain.provider.DispatcherProvider
+import com.enrech.ulessontest.common_domain.provider.UrlProvider
 import com.enrech.ulessontest.common_domain.repository.CacheDbRepository
 import comenrechulessontestcommondomain.sqldelight.ChapterDto
 import dagger.Binds

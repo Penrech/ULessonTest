@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class LessonResponseDto(
     @SerialName("id") val id: String? = null,
+    @SerialName("groupId") val groupId: String? = null,
     @SerialName("name") val name: String? = null,
     @SerialName("description") val description: String? = null,
     @SerialName("duration") val duration: Long? = null,

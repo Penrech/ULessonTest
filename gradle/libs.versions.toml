@@ -56,7 +56,6 @@ hilt = "1.0.0"
 coil = "2.2.2"
 lottie = "5.2.0"
 inject = "1"
-inject_kmm = "1.0.1"
 indicator = "4.2"
 multiplatform_settings = "0.9"
 multiplatform_parcelize = "0.8.0"
@@ -193,7 +192,6 @@ lottie_compose = { module = "com.airbnb.android:lottie-compose", version.ref = "
 # Others
 javax_annotation = { module = "javax.annotation:javax.annotation-api", version.ref = "javax_annotation" }
 javax_inject = { module = "javax.inject:javax.inject", version.ref = "inject" }
-javax_inject_kmm = { module = "com.chrynan.inject:inject", version.ref = "inject_kmm" }
 pager_indicator = { module = "com.tbuonomo:dotsindicator", version.ref = "indicator" }
 multiplatform_settings = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "multiplatform_settings" }
 multiplatform_parcelize = { module = "dev.icerock.moko:parcelize", version.ref = "multiplatform_parcelize" }

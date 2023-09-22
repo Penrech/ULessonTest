@@ -1,10 +1,10 @@
 package com.enrech.ulessontest.common_data.repository
 
-import com.chrynan.inject.Inject
 import com.enrech.ulessontest.common_data.mapper.ChapterCacheDtoMapper
 import com.enrech.ulessontest.common_data.mapper.LessonCacheDtoMapper
 import com.enrech.ulessontest.common_data.mapper.LessonGroupCacheDtoMapper
 import com.enrech.ulessontest.common_data.mapper.SubjectCacheDtoMapper
+import com.enrech.ulessontest.common_domain.Inject
 import com.enrech.ulessontest.common_domain.ULessonCacheDb
 import com.enrech.ulessontest.common_domain.entity.ChapterCacheDto
 import com.enrech.ulessontest.common_domain.entity.LessonCacheDto
@@ -22,16 +22,24 @@ class CacheDbRepositoryImpl @Inject constructor(
     override fun addLessons(lessons: List<LessonCacheDto>): List<LessonCacheDto> =
         db.transactionWithResult { addLessonsQuery(lessons) }
 
+    override fun addLesson(lesson: LessonCacheDto): LessonCacheDto = db.transactionWithResult {
+        db.lessonQueries.insertLesson(lessonCacheDtoMapper.mapTo(lesson))
+        lessonCacheDtoMapper.mapFrom(db.lessonQueries.getLesson(lesson.id).executeAsOne())
+    }
+
     private fun addLessonsQuery(lessons: List<LessonCacheDto>): List<LessonCacheDto> {
-        db.lessonQueries.clearLessons()
         lessonCacheDtoMapper.mapToList(lessons).forEach {
             db.lessonQueries.insertLesson(it)
         }
-        return lessonCacheDtoMapper.mapFromList(db.lessonQueries.getAllLesson().executeAsList())
+        val lessonsIds = lessons.map { it.id }
+        return lessonCacheDtoMapper.mapFromList(db.lessonQueries.getLessonsByIds(lessonsIds).executeAsList())
     }
 
     override fun getLessons(): List<LessonCacheDto> =
         lessonCacheDtoMapper.mapFromList(db.lessonQueries.getAllLesson().executeAsList())
+
+    override fun getLessonsByGroup(id: String): List<LessonCacheDto> =
+        lessonCacheDtoMapper.mapFromList(db.lessonQueries.getLessonsByGroupId(listOf(id)).executeAsList())
 
     override fun getLesson(id: String): LessonCacheDto =
         lessonCacheDtoMapper.mapFrom(db.lessonQueries.getLesson(id).executeAsOne())
@@ -41,8 +49,12 @@ class CacheDbRepositoryImpl @Inject constructor(
             addLessonGroupsQuery(groups)
         }
 
+    override fun addLessonGroup(group: LessonGroupCacheDto): LessonGroupCacheDto = db.transactionWithResult {
+        db.lessonGroupQueries.insertLessonGroup(lessonGroupCacheDtoMapper.mapTo(group))
+        lessonGroupCacheDtoMapper.mapFrom(db.lessonGroupQueries.getLessonGroup(group.id).executeAsOne())
+    }
+
     private fun addLessonGroupsQuery(groups: List<LessonGroupCacheDto>): List<LessonGroupCacheDto> {
-        db.lessonGroupQueries.clearLessonGroups()
         val lessons = groups.flatMap { it.lessons }
 
         lessonGroupCacheDtoMapper.mapToList(groups).forEach {
@@ -56,6 +68,9 @@ class CacheDbRepositoryImpl @Inject constructor(
 
     override fun getLessonGroups(): List<LessonGroupCacheDto> =
         db.transactionWithResult { getLessonGroupsQuery() }
+
+    override fun getLessonGroupsByChapter(id: String): List<LessonGroupCacheDto> =
+        lessonGroupCacheDtoMapper.mapFromList(db.lessonGroupQueries.getLessonGroupSByChapterId(listOf(id)).executeAsList())
 
     private fun getLessonGroupsQuery(chapterIds: List<String> = emptyList()): List<LessonGroupCacheDto> {
         val rawGroups =
@@ -80,8 +95,12 @@ class CacheDbRepositoryImpl @Inject constructor(
     override fun addChapters(chapters: List<ChapterCacheDto>): List<ChapterCacheDto> =
         db.transactionWithResult { addChaptersQuery(chapters) }
 
+    override fun addChapter(chapter: ChapterCacheDto): ChapterCacheDto = db.transactionWithResult {
+        db.chapterQueries.insertChapter(chapterCacheDtoMapper.mapTo(chapter))
+        chapterCacheDtoMapper.mapFrom(db.chapterQueries.getChapter(chapter.id).executeAsOne())
+    }
+
     private fun addChaptersQuery(chapters: List<ChapterCacheDto>): List<ChapterCacheDto> {
-        db.chapterQueries.clearChapter()
         val lessonGroups = chapters.flatMap { it.lessonGroups }
 
         chapterCacheDtoMapper.mapToList(chapters).forEach {
@@ -94,6 +113,9 @@ class CacheDbRepositoryImpl @Inject constructor(
     }
 
     override fun getChapters(): List<ChapterCacheDto> = db.transactionWithResult { getChaptersQuery() }
+
+    override fun getChaptersBySubject(id: String): List<ChapterCacheDto> =
+        chapterCacheDtoMapper.mapFromList(db.chapterQueries.getChaptersBySubjectId(listOf(id)).executeAsList())
 
     private fun getChaptersQuery(subjectsIds: List<String> = emptyList()): List<ChapterCacheDto> {
         val chapters = if (subjectsIds.isEmpty()) {
@@ -112,7 +134,8 @@ class CacheDbRepositoryImpl @Inject constructor(
     override fun getChapter(id: String): ChapterCacheDto =
         chapterCacheDtoMapper.mapFrom(db.chapterQueries.getChapter(id).executeAsOne())
 
-    override fun addSubjects(subjects: List<SubjectCacheDto>): List<SubjectCacheDto> {
+    override fun replaceSubjects(subjects: List<SubjectCacheDto>): List<SubjectCacheDto> = db.transactionWithResult {
+        db.subjectQueries.clearSubject()
         subjectCacheDtoMapper.mapToList(subjects).forEach {
             db.subjectQueries.insertSubject(it)
         }
@@ -120,7 +143,12 @@ class CacheDbRepositoryImpl @Inject constructor(
 
         addChaptersQuery(chapters)
 
-        return getSubjectsQuery()
+        getSubjectsQuery()
+    }
+
+    override fun addSubject(subject: SubjectCacheDto): SubjectCacheDto = db.transactionWithResult {
+        db.subjectQueries.insertSubject(subjectCacheDtoMapper.mapTo(subject))
+        subjectCacheDtoMapper.mapFrom(db.subjectQueries.getSubject(subject.id).executeAsOne())
     }
 
     override fun getSubjects(): List<SubjectCacheDto> = db.transactionWithResult { getSubjectsQuery() }

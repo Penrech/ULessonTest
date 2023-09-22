@@ -1,7 +1,7 @@
 package com.enrech.ulessontest.common_data.mapper
 
-import com.chrynan.inject.Inject
 import com.enrech.ulessontest.common_domain.BaseReversibleMapper
+import com.enrech.ulessontest.common_domain.Inject
 import com.enrech.ulessontest.common_domain.entity.LessonCacheDto
 import comenrechulessontestcommondomain.sqldelight.LessonDto
 

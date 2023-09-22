@@ -25,7 +25,7 @@ data object HttpClientProvider {
         }
 
         defaultRequest {
-            port = 443
+            port = 8080
         }
 
         install(ContentNegotiation) {

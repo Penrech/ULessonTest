@@ -60,6 +60,18 @@ inline fun <R, T> ULessonResult<T>.map(
     is ULessonResult.Failure -> ULessonResult.Failure(onFailure(error))
 }
 
+inline fun <R, T> ULessonResult<T>.transform(
+    transform: (ULessonResult<T>) -> ULessonResult<R>
+): ULessonResult<R> = transform(this)
+
+inline fun <R,T> ULessonResult<T>.transform(
+    onSuccess: (value: T) -> ULessonResult<R>,
+    onFailure: (error: ULessonError) -> ULessonResult<R>
+): ULessonResult<R> = when(this) {
+    is ULessonResult.Success -> onSuccess(data)
+    is ULessonResult.Failure -> onFailure(error)
+}
+
 inline fun <R, T> ULessonResult<T>.map(
     transform: (T) -> R
 ): ULessonResult<R> = when (this) {
