@@ -13,7 +13,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":ulesson-domain"))
+                api(project(":common-domain"))
                 api(libs.multiplatform.parcelize)
                 api(libs.kotlin.date.time)
                 api(libs.kotlin.serialization)
@@ -22,7 +22,14 @@ kotlin {
                 implementation(libs.coroutines.core)
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation(project(":common-domain"))
+                implementation(libs.dagger)
+                implementation(libs.coroutines.core)
+                implementation(libs.coroutines.android)
+            }
+        }
         val iosMain by getting
 
         val iosSimulatorArm64Main by getting
@@ -36,5 +43,9 @@ android {
     defaultConfig {
         minSdk = Integer.parseInt(libs.versions.min.sdk.get())
         targetSdk = Integer.parseInt(libs.versions.target.sdk.get())
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }

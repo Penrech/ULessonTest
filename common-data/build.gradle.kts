@@ -8,11 +8,7 @@ plugins {
 }
 
 kotlin {
-    androidTarget {
-        compilations.all {
-            kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
-        }
-    }
+    androidTarget()
     ios()
     iosSimulatorArm64()
 
@@ -38,7 +34,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                api(project(":common-domain"))
+                implementation(project(":common-domain"))
                 implementation(libs.ktor.client.android)
 
                 implementation(libs.dagger)

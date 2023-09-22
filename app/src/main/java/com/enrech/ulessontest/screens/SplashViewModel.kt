@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    dispatcherProvider: DispatcherProvider
+    dispatcherProvider: DispatcherProvider,
 ) : BaseViewModel<SplashScreenState, SplashAction, SplashEffect>() {
 
     override fun createInitialScreenState(): SplashScreenState = SplashScreenState

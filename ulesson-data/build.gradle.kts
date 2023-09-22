@@ -6,11 +6,7 @@ plugins {
 }
 
 kotlin {
-    androidTarget {
-        compilations.all {
-            kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
-        }
-    }
+    androidTarget()
     ios()
     iosSimulatorArm64()
 

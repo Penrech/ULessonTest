@@ -6,11 +6,7 @@ plugins {
 }
 
 kotlin {
-    androidTarget {
-        compilations.all {
-            kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
-        }
-    }
+    androidTarget()
     ios()
     iosSimulatorArm64()
 
@@ -28,7 +24,10 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                api(project(":common-domain"))
+                implementation(project(":common-domain"))
+                implementation(libs.dagger)
+                implementation(libs.coroutines.core)
+                implementation(libs.coroutines.android)
             }
         }
         val iosMain by getting

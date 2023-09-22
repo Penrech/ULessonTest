@@ -34,11 +34,9 @@ android {
         getByName("debug") {
             isDebuggable = true
             applicationIdSuffix = ".debug"
-            manifestPlaceholders["appAuthRedirectScheme"] = "com.enrech.ulessontest"
         }
 
         getByName("release") {
-            manifestPlaceholders["appAuthRedirectScheme"] = "com.enrech.ulessontest"
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -64,6 +62,7 @@ android {
     }
 
     buildFeatures.compose = true
+    buildFeatures.buildConfig = true
     composeOptions.kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
 
     sourceSets.getByName("main") {
