@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
     kotlin("plugin.serialization")
 }
 
@@ -34,15 +34,6 @@ kotlin {
                 implementation(libs.ktor.client.android)
                 implementation(libs.timber)
                 implementation(libs.dagger)
-
-                configurations["kapt"].dependencies
-                    .add(
-                        org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency(
-                            "com.google.dagger",
-                            "hilt-android-compiler",
-                            libs.versions.dagger.get()
-                        )
-                    )
             }
         }
         val iosMain by getting {
@@ -56,15 +47,24 @@ kotlin {
     }
 }
 
+dependencies {
+    add("kspAndroid", libs.dagger.compiler)
+}
+
 android {
     namespace = "com.enrech.ulessontest.videoplayer_data"
     compileSdk = Integer.parseInt(libs.versions.compile.sdk.get())
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
         minSdk = Integer.parseInt(libs.versions.min.sdk.get())
         targetSdk = Integer.parseInt(libs.versions.target.sdk.get())
     }
-    kapt {
-        correctErrorTypes = true
+
+    buildTypes {
+        debug {}
+        release {}
     }
 }
 

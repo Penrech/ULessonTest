@@ -13,6 +13,8 @@ kotlin = "1.9.10"
 kotlin_serialization = "1.5.1"
 kotlin_date_time = "0.4.1"
 
+ksp = "1.9.0-1.0.12"
+
 dokka = "1.9.0"
 
 androidx_appcompat = "1.6.1"

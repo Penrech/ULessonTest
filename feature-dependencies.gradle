@@ -57,7 +57,7 @@ dependencies {
     implementation libs.dagger
     implementation libs.dagger.navigation
     implementation libs.dagger.navigation.compose
-    kapt libs.dagger.compiler
+    ksp libs.dagger.compiler
 
     //Coil
     implementation libs.coil

@@ -134,7 +134,7 @@ class CacheDbRepositoryImpl @Inject constructor(
     override fun getChapter(id: String): ChapterCacheDto =
         chapterCacheDtoMapper.mapFrom(db.chapterQueries.getChapter(id).executeAsOne())
 
-    override fun replaceSubjects(subjects: List<SubjectCacheDto>): List<SubjectCacheDto> = db.transactionWithResult {
+    override fun replaceSubjects(subjects: List<SubjectCacheDto>): List<SubjectCacheDto> = db.transactionWithResult(true) {
         db.subjectQueries.clearSubject()
         subjectCacheDtoMapper.mapToList(subjects).forEach {
             db.subjectQueries.insertSubject(it)

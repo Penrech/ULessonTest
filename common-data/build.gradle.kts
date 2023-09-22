@@ -1,10 +1,8 @@
-import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency
-
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
     kotlin("plugin.serialization")
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
 }
 
 kotlin {
@@ -23,6 +21,7 @@ kotlin {
                 implementation(libs.coroutines.core)
 
                 implementation(libs.sqldelight.adapters)
+                implementation(libs.sqldelight.coroutines)
 
                 //Ktor
                 implementation(libs.ktor.client.core)
@@ -40,15 +39,6 @@ kotlin {
                 implementation(libs.dagger)
                 implementation(libs.androidx.java8)
                 implementation(libs.androidx.process.lifecycle)
-
-                configurations["kapt"].dependencies
-                    .add(
-                        DefaultExternalModuleDependency(
-                            "com.google.dagger",
-                            "hilt-android-compiler",
-                            libs.versions.dagger.get()
-                        )
-                    )
             }
         }
         val iosMain by getting {
@@ -62,15 +52,24 @@ kotlin {
     }
 }
 
+dependencies {
+    add("kspAndroid", libs.dagger.compiler)
+}
+
 android {
     namespace = "com.enrech.ulessontest.common_data"
     compileSdk = Integer.parseInt(libs.versions.compile.sdk.get())
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
         minSdk = Integer.parseInt(libs.versions.min.sdk.get())
         targetSdk = Integer.parseInt(libs.versions.target.sdk.get())
     }
-    kapt {
-        correctErrorTypes = true
+
+    buildTypes {
+        debug {}
+        release {}
     }
 }
 

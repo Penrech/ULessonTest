@@ -40,9 +40,16 @@ kotlin {
 android {
     namespace = "com.enrech.ulessontest.videoplayer_domain"
     compileSdk = Integer.parseInt(libs.versions.compile.sdk.get())
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
         minSdk = Integer.parseInt(libs.versions.min.sdk.get())
         targetSdk = Integer.parseInt(libs.versions.target.sdk.get())
+    }
+    buildTypes {
+        debug {}
+        release {}
     }
 }
 

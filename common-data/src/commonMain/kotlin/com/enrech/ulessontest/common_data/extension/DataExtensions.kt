@@ -23,7 +23,7 @@ suspend fun <T> safeCall(call: suspend () -> T): ULessonResult<T> {
     }
 }
 
-fun <T> safeTransaction(previousError: ULessonError? = null, call: () -> T): ULessonResult<T> {
+suspend fun <T> safeTransaction(previousError: ULessonError? = null, call: suspend () -> T): ULessonResult<T> {
     return try {
         val result = call()
         ULessonResult.Success(result, previousError)

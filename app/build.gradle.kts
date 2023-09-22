@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
     id("androidx.navigation.safeargs.kotlin")
     id("dagger.hilt.android.plugin")
 }
@@ -72,5 +72,7 @@ android {
 
 dependencies {
     api(project(":common"))
+    api(project(":ulesson-data"))
+    api(project(":common-data"))
     implementation(project(":main"))
 }

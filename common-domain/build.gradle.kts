@@ -19,6 +19,7 @@ kotlin {
                 implementation(libs.coroutines.core)
 
                 implementation(libs.sqldelight.adapters)
+                implementation(libs.sqldelight.coroutines)
 
                 //Ktor
                 implementation(libs.ktor.client.core)
@@ -59,11 +60,16 @@ android {
     namespace = "com.enrech.ulessontest.common_domain"
     compileSdk = Integer.parseInt(libs.versions.compile.sdk.get())
 
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
         minSdk = Integer.parseInt(libs.versions.min.sdk.get())
         targetSdk = Integer.parseInt(libs.versions.target.sdk.get())
     }
-
+    buildTypes {
+        debug {}
+        release {}
+    }
 }
 
 java {

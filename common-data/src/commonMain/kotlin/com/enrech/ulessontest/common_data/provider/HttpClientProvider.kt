@@ -24,10 +24,6 @@ data object HttpClientProvider {
             requestTimeoutMillis = 15 * 1000L
         }
 
-        defaultRequest {
-            port = 8080
-        }
-
         install(ContentNegotiation) {
             json(Json {
                 isLenient = true
