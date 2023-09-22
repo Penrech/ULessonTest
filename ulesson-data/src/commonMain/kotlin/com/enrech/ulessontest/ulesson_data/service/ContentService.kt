@@ -1,8 +1,8 @@
 package com.enrech.ulessontest.ulesson_data.service
 
-import com.chrynan.inject.Singleton
-import com.enrech.ulessontest.common_data.provider.UrlProvider
 import com.enrech.ulessontest.common_domain.Inject
+import com.enrech.ulessontest.common_domain.Singleton
+import com.enrech.ulessontest.common_domain.provider.UrlProvider
 import com.enrech.ulessontest.ulesson_data.response.ChapterResponseDto
 import com.enrech.ulessontest.ulesson_data.response.LessonGroupResponseDto
 import com.enrech.ulessontest.ulesson_data.response.LessonResponseDto

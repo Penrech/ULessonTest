@@ -64,8 +64,10 @@ android {
         targetSdk = Integer.parseInt(libs.versions.target.sdk.get())
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
